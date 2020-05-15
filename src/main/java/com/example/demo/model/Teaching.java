@@ -13,8 +13,8 @@ import java.util.Date;
 /**
  * 教学视频
  */
-@Entity
-@Table(name = "t_teaching")
+//@Entity
+//@Table(name = "t_teaching")
 public class Teaching {
     private static final long serialVersionUID = 1L;
 
@@ -28,126 +28,126 @@ public class Teaching {
     /**
      * id
      */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "id")
     private Long id;
     /**
      * 标题
      */
-    @Column(name = "title")
+//    @Column(name = "title")
     private String title;
     /**
      * 来源 1官方 2外部
      */
-    @Column(name = "source")
+//    @Column(name = "source")
     private Integer source;
     /**
      * 内容
      */
-    @Column(name = "content")
+//    @Column(name = "content")
     private String content;
     /**
      * 排序
      */
-    @Column(name = "seq")
+//    @Column(name = "seq")
     private Integer seq;
     /**
      * 发布状态 1已发布 0未发布
      */
-    @Column(name = "status")
+//    @Column(name = "status")
     private Integer status;
     /**
      * 视频url
      */
-    @Column(name = "video_url")
+//    @Column(name = "video_url")
     private String videoUrl;
     /**
      * 视频时长
      */
-    @Column(name = "video_duration")
+//    @Column(name = "video_duration")
     private String videoDuration;
     /**
      * 封面图片
      */
-    @Column(name = "cover_image")
+//    @Column(name = "cover_image")
     private String coverImage;
     /**
      * 阅读数初始值
      */
-    @Column(name = "base_watch")
+//    @Column(name = "base_watch")
     private Integer baseWatch;
     /**
      * 阅读数
      */
-    @Column(name = "watch")
+//    @Column(name = "watch")
     private Integer watch;
     /**
      * 点赞人数初始值
      */
-    @Column(name = "base_support")
+//    @Column(name = "base_support")
     private Integer baseSupport;
     /**
      * 点赞数
      */
-    @Column(name = "support")
+//    @Column(name = "support")
     private Integer support;
     /**
      * 收藏初始值
      */
-    @Column(name = "base_collect")
+//    @Column(name = "base_collect")
     private Integer baseCollect;
     /**
      * 收藏
      */
-    @Column(name = "collect")
+//    @Column(name = "collect")
     private Integer collect;
     /**
      * 评论数
      */
-    @Column(name = "comment")
+//    @Column(name = "comment")
     private Integer comment;
     /**
      * 1.文章2.视频
      */
-    @Column(name = "type")
+//    @Column(name = "type")
     private Integer type;
     /**
      * 外部链接(unuse)
      */
-    @Column(name = "external_link")
+//    @Column(name = "external_link")
     private String externalLink;
     /**
      * 更新时间
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @Column(name = "updated")
+//    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+//    @Column(name = "updated")
     private Date updated;
     /**
      * 创建时间
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @Column(name = "created")
+//    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+//    @Column(name = "created")
     private Date created;
     /**
      * 是否已删除
      */
-    @Column(name = "deleted")
+//    @Column(name = "deleted")
     private Boolean deleted;
     /**
      * enums标签类型 1.教学 2.大神推荐
      */
-    @Column(name = "category")
+//    @Column(name = "category")
     private Integer category;
     /**
      * 推荐人
      */
-    @Column(name = "referrer")
+//    @Column(name = "referrer")
     private String referrer;
     /**
      * 来源 来源于什么网站
      */
-    @Column(name = "origin")
+//    @Column(name = "origin")
     private String origin;
     // fields end
 

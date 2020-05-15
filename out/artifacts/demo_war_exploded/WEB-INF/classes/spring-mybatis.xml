@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+                        http://mybatis.org/schema/mybatis-spring   http://mybatis.org/schema/mybatis-spring.xsd">
+
+    <!-- Mapper是接口不会被springc当成组建扫描进去-->
+    <!--注册一个发现映射器来扫描Mapper-->
+    <mybatis:scan base-package="com.example.demo.mapper" />
+
+    <!--注册一个发现映射器来扫描Mapper-->
+<!--    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+<!--        <property name="basePackage" value="com.example.demo.mapper"/>-->
+<!--        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>-->
+<!--    </bean>-->
+
+    <!--交由容器管理事务 -->
+    <tx:jta-transaction-manager/>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+
+    <!-- 引入配置文件 -->
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:jdbc.properties"/>
+    </bean>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${driver}"/>
+        <property name="jdbcUrl" value="${url}"/>
+        <property name="user" value="${username}"/>
+        <property name="password" value="${password}"/>
+        <!-- 初始化连接大小 -->
+        <property name="initialPoolSize" value="${initialSize}"></property>
+<!--        &lt;!&ndash; 连接池最大数量 &ndash;&gt;-->
+<!--        <property name="maxPoolSize" value="${maxActive}"></property>-->
+        <!-- 连接池最大空闲 -->
+        <property name="maxPoolSize" value="${maxIdle}"></property>
+        <!-- 连接池最小空闲 -->
+        <property name="minPoolSize" value="${minIdle}"></property>
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxIdleTime" value="${maxWait}"></property>
+    </bean>
+
+    <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+</beans>

@@ -1,14 +1,13 @@
 package com.example.demo.controller;
 
-import com.example.demo.Dao.TeachingDao;
+import com.example.demo.mapper.UserMapper;
+import com.example.demo.model.Tag;
 import com.example.demo.model.Teaching;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Date;
 import java.util.List;
 
 @RequestMapping("test")
@@ -16,9 +15,9 @@ import java.util.List;
 public class testController {
 
     @Autowired
-    private TeachingDao teachingDao;
-    @Autowired
-    private RedisTemplate<String, String> redisTemplate;
+    private UserMapper userMapper;
+//    @Autowired
+//    private RedisTemplate redisTemplate;
 
     @RequestMapping("/test")
     @ResponseBody
@@ -47,18 +46,26 @@ public class testController {
 //        query.setId(1L);
 //        List<Teaching> teachings = teachingDao.find(query);
 //        System.out.println(teachings);
-        redisTest();
+        List<Teaching> allTeaching = userMapper.getAllTeaching();
+        System.out.println(allTeaching);
+        List<Tag> tag = userMapper.getTag();
+//        redisTest();
     }
 
 
-    public void redisTest() {
-        System.out.println(redisTemplate.hasKey("user:10001"));
-        redisTemplate.delete("user:10001");
-        redisTemplate.delete("ahuang");
-        System.out.println(redisTemplate.hasKey("ahuang"));
-        redisTemplate.opsForValue().set("ahuang", "123");
-        System.out.println(redisTemplate.hasKey("ahuang"));
-        System.out.println(redisTemplate.opsForValue().get("ahuang"));
+//    public void redisTest() {
+//        System.out.println(redisTemplate.hasKey("user:10001"));
+//        redisTemplate.delete("user:10001");
+//        redisTemplate.delete("ahuang");
+//        System.out.println(redisTemplate.hasKey("ahuang"));
+//        redisTemplate.opsForValue().set("ahuang", "123");
+//        System.out.println(redisTemplate.hasKey("ahuang"));
+//        System.out.println(redisTemplate.opsForValue().get("ahuang"));
+//    }
+
+    @RequestMapping("index")
+    public String index () {
+        return "index";
     }
 
 }

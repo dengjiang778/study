@@ -7,7 +7,7 @@ public class BloomFilter {
     private static final int DEFAULT_SIZE = 1 << 25;
     /* 不同哈希函数的种子，一般应取质数 */
     private static final int[] seeds = new int[]
-       
+
             {
                     5, 7, 11, 13, 31, 37, 61
             };
