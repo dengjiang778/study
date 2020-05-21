@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("test")
 @Controller
@@ -64,7 +66,10 @@ public class testController {
 //    }
 
     @RequestMapping("index")
-    public String index () {
+    public String index(Map<String, Object> map, HttpServletRequest request) {
+        request.setAttribute("name", "hello");
+        System.out.println(map.getClass());
+        map.put("name", "hello");
         return "index";
     }
 

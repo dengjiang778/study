@@ -1,0 +1,81 @@
+package com.example.demo.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+/**
+ * Role is necessary, for access control, etc.
+ * <p>
+ * Aug 30, 2012
+ */
+public class Role {
+    public Role() {
+    }
+
+    public Role(Long id) {
+        this.id = id;
+    }
+
+    private Long id;
+
+    private String name;
+
+    /**
+     * 描述
+     */
+    private String description;
+
+    private String code;
+
+    private Boolean editable;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Boolean getEditable() {
+        return editable;
+    }
+
+    public void setEditable(Boolean editable) {
+        this.editable = editable;
+    }
+
+}
