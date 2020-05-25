@@ -1,8 +1,6 @@
 package com.example.demo.Interceptor;
 
 import com.example.demo.mapper.AuthorityMapper;
-import com.example.demo.mapper.UserMapper;
-import com.example.demo.model.Authority;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -16,6 +14,7 @@ public class SimpleAuthenticationInterceptor implements HandlerInterceptor {
     @Autowired
     private AuthorityMapper authorityMapper;
 
+    //简单拦截器示例
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession();

@@ -17,7 +17,7 @@ public class IndexController {
 
     @RequestMapping(value = "/index")
     public String index(Map<String, Object> map) {
-        return "redirect:error";
+        return "index";
 
     }
 
